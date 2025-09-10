@@ -7,8 +7,8 @@
 </head>
 <body>
     <?php
-    $nombre = $_GET["nombre"];
-    echo "<p>Hola $nombre</p>";
+    $usuario = $_GET["usuario"];
+    echo "<p>Bienvenido, $usuario</p>";
     ?>
 </body>
 </html>
