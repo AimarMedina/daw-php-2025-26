@@ -7,9 +7,11 @@
 </head>
 <body>
     <?php
-    $nombre = $_GET["nombre"];
-    $edad = $_GET["edad"];
-    echo "<p>mi amigo $nombre tiene $edad años.</p>";
+        function multiplicar($a, $b){
+            return $a * $b;
+        }
+        $resultado = multiplicar($_GET["a"], $_GET["b"]);
+        echo "<p>El resultado de la multiplicación es $resultado</p>";
     ?>
 </body>
 </html>
