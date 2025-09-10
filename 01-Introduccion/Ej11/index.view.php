@@ -9,8 +9,7 @@
 
 <body>
     <?php
-
-    echo $resultado;
+        echo $resultado;
     ?>
 </body>
 
