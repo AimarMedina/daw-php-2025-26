@@ -62,3 +62,5 @@ vscjava.vscode-java-test
 vscjava.vscode-maven
 wallabyjs.quokka-vscode
 zignd.html-css-class-completion
+
+cat extensions.txt | xargs -n 1 code --install-extension
