@@ -8,9 +8,7 @@
 </head>
 
 <body>
-    <?php
-        echo $resultado;
-    ?>
+    <?= $resultado;?>
 </body>
 
 </html>

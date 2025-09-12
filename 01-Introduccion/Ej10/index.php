@@ -9,7 +9,12 @@
 
 <body>
     <?php
-
+        function concatenar($a,$b = "mundo"){
+            return $a . " " . $b;
+        }
+        $a = $_GET["a"];
+        $b = $_GET["b"] ?? "mundo";
+        $resultado = concatenar($a);
     echo $resultado;
     ?>
 </body>
