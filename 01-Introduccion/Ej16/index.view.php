@@ -6,9 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-    $usuario = $_GET["usuario"];
-    echo "<h1>Bienvenido, $usuario</h1>";
-    ?>
+    <h1>Resultado: <?= sumult($_GET["n1"], $_GET["n2"]) ?></h1>
 </body>
 </html>

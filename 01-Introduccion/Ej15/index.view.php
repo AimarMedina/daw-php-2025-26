@@ -6,9 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-    $usuario = $_GET["usuario"];
-    echo "<h1>Bienvenido, $usuario</h1>";
-    ?>
+    <h1>Datos</h1>
+    <p>El <?= $_GET["clave"]?> de <?=$_GET["nombre"] ?> es <?= getDatos($diccionario, $_GET["nombre"], $_GET["clave"]) ?></p>
 </body>
 </html>

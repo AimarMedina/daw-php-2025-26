@@ -6,9 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-    $usuario = $_GET["usuario"];
-    echo "<h1>Bienvenido, $usuario</h1>";
-    ?>
+    <h1>La suma desde el 0 hasta el <?= $_GET["numero"] ?> es <?= sumas($_GET["numero"]) ?></h1>
 </body>
 </html>

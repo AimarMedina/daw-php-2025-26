@@ -6,9 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-    $usuario = $_GET["usuario"];
-    echo "<h1>Bienvenido, $usuario</h1>";
-    ?>
+    <h1><?= validar($usuarios, $_GET["user"], $_GET["passwd"]) ?></h1>
 </body>
 </html>

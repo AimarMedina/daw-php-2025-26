@@ -6,9 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-    $usuario = $_GET["usuario"];
-    echo "<h1>Bienvenido, $usuario</h1>";
-    ?>
+    <h1>Buscar País</h1>
+    <p>El país buscado es: <?= $_GET['pais']; ?> y esta en la posicion <?= buscarPais($_GET['pais'], $paises) ?></p>
 </body>
 </html>
