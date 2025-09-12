@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <?= crearLista($estudiantes)?>
 </body>
 </html>

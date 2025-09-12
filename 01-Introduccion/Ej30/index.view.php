@@ -6,5 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <?php foreach($estudiantes as $nombre => $nota){
+        echo "<p>El estudiante $nombre ha sacado un $nota</p>";    
+    } 
+    ?>
+        
+    
 </body>
 </html>

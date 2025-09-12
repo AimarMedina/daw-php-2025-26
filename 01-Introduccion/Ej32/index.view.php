@@ -6,5 +6,6 @@
     <title>Document</title>
 </head>
 <body>
+    <?= crearTabla($estudiantes); ?>
 </body>
 </html>
