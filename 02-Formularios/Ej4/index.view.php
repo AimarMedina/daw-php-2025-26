@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?= generarTabla($agenda)?>
+   <h1>Bienvenido <?=$nombre?></h1>
 </body>
 </html>
