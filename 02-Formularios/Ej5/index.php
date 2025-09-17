@@ -1,5 +1,5 @@
 <?php
-$productos = [
+ $productos = [
     "p1" => [
         "Nombre" => "Logitech K120",
         "Descripción" => "Teclado multimedia USB plug&play, trabPoint Caps (10px, Soft Dome)",
@@ -32,7 +32,22 @@ $productos = [
     ]
 ];
 
+    if (!empty($_POST)) {
+        $enviado = true;
+        $productosSeleccionadosCantidad = $_POST['cantidad'];
 
+        $precioTotal = calcularPrecioTotal($productosSeleccionadosCantidad,$productos);
+    }
+
+    function calcularPrecioTotal($productosSeleccionados, $productos){
+        $precioTotal = 0;
+        foreach ($productosSeleccionados as $key => $cantidad) {
+            if (isset($productos[$key])) {
+                $precioTotal += $productos[$key]["Precio"] * $cantidad;
+            }
+        }
+        return number_format($precioTotal,2);
+    }
 
 include "index.view.php";
 ?>
