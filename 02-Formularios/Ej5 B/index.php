@@ -45,7 +45,6 @@ if (!empty($_POST)) {
         }
     };
 
-    var_dump($productosSeleccionadosCantidad);
 
     $precioTotal = calcularPrecioTotal($productosSeleccionadosCantidad, $productos);
 }

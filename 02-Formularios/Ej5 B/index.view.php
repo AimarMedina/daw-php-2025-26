@@ -36,7 +36,7 @@
             padding: 5px;
             border: 1px solid;
             border-radius: 2px;
-            color: #000;
+            color: #ffffffff;
         }
     </style>
 </head>
