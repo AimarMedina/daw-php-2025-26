@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-   <h1>Bienvenido <?=$nombre?></h1>
+   <h1>Bienvenid@ <?=$nombre?></h1>
 </body>
 </html>

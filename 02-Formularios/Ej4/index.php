@@ -43,6 +43,8 @@ if (!empty($_GET['usr']) || !empty($_GET['passwd'])) {
             $nombre = $usuarios[$user]["nombre"];
             include "index.view.php";
             break;
+        default:
+            include "index.login.view.php";
     }
 } else {
     include "index.login.view.php";

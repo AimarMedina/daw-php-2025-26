@@ -57,7 +57,7 @@
                         <td><?= $producto["Nombre"] ?></td>
                         <td><?= $producto["Descripción"] ?></td>
                         <td><?= $producto["Precio"] ?>€</td>
-                        <td><input type="number" name="cantidad[<?= $key ?>]" min="0" value="0"></td>
+                        <td><input type="number" name="<?= $key ?>" min="0" value="0"></td>
                     </tr>
                 <?php endforeach ?>
             </table><br>
@@ -72,9 +72,7 @@
             <h1>Detalle de la compra</h1>
             <ul>
                 <?php foreach ($productosSeleccionadosCantidad as $key => $cantidad): ?>
-                    <?php if ($cantidad != 0): ?>
-                        <li><?= $productos[$key]["Nombre"] ?> (<?= $cantidad ?>)</li>
-                    <?php endif; ?>
+                    <li><?= $productos[$key]["Nombre"] ?> (<?= $cantidad ?>)</li>
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
