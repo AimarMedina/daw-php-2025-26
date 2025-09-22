@@ -2,13 +2,16 @@
 include "index.datos.php";
 session_start();
 
-function verificarSesion($sesion){
+function verificarSesion($sesion)
+{
     if (!isset($_SESSION[$sesion])) {
         return false;
     }
+
     return true;
 }
-function validarInicioSesion($usuarios, $user, $passwd){
+function validarInicioSesion($usuarios, $user, $passwd)
+{
     if (isset($usuarios[$user])) {
         if ($usuarios[$user]["password"] === $passwd) {
             return 0;
@@ -17,13 +20,18 @@ function validarInicioSesion($usuarios, $user, $passwd){
     }
     return 2;
 }
-function cerrarSesion(){
-    include "index.login.php";
+function cerrarSesion()
+{
     unset($_SESSION['usuario']);
+    include "index.login.php";
 }
+
+$Error_Mssg = [1 => "Password incorrecto", 2 => "Usuario Incorrecto"];
+
 
 if (isset($_POST['iniciarSesion'])) {
     if (verificarSesion('usuario')) {
+        $usuario = $_SESSION['usuario'];
         include "index.view.php";
     } else {
         if (!empty($_POST['usr']) && !empty($_POST['passwd'])) {
@@ -45,6 +53,11 @@ if (isset($_POST['iniciarSesion'])) {
     }
 } else if (isset($_POST['cerrarSesion'])) {
     cerrarSesion();
+} else {
+    if (verificarSesion('usuario')) {
+        include "index.view.php";
+    } else {
+        include_once "index.login.php";
+    }
 }
 
-include_once "index.login.php";

@@ -13,7 +13,7 @@
         <label for="passwd">Introduzca la contraseña:</label>
         <input type="password" name="passwd" id="passwd"><br><br>
 
-        <input type="submit" value="Enviar" name="inciarSesion">
+        <input type="submit" value="Enviar" name="iniciarSesion">
     </form>
 
     <?php if(isset($enviado) && $login !== 0):?>
