@@ -9,7 +9,7 @@ if (!isset($_SESSION['intentosFallidos'])) {
 function verificarSesion($sesion)
 {
     return  isset($_SESSION[$sesion]);
-     
+
 
 }
 function validarInicioSesion($usuarios, $user, $passwd, $intentosFallidos)
@@ -19,7 +19,6 @@ function validarInicioSesion($usuarios, $user, $passwd, $intentosFallidos)
             if ($usuarios[$user]["password"] === $passwd) {
                 return 0;
             }
-            echo "Error1";
             return 1;
         }
         return 2;
@@ -62,8 +61,6 @@ if (isset($_POST['iniciarSesion'])) {
                 case 1:
                 case 2:
                     $_SESSION['intentosFallidos']++;
-                    $user = null;
-                    $passwd = null;
                     include_once "index.login.php";
                     echo $_SESSION['intentosFallidos'];
                     break;
@@ -73,8 +70,6 @@ if (isset($_POST['iniciarSesion'])) {
                     break;
             }
         } else {
-            $user = null;
-            $passwd = null;
             include_once "index.login.php";
         }
     }
@@ -84,8 +79,6 @@ if (isset($_POST['iniciarSesion'])) {
     if (verificarSesion('usuario')) {
         include "index.view.php";
     } else {
-        $user = null;
-        $passwd = null;
         include_once "index.login.php";
     }
 }
