@@ -21,18 +21,20 @@ if (!empty($_SESSION['productosSeleccionadosCantidad'])) {
     $precioTotal = calcularPrecioTotal($_SESSION['productosSeleccionadosCantidad'], $productos);
 }
 
+if(isset($_GET['producto'])){
+    $producto = $_GET['producto'];
+    include "index.detalles.php";
+    die();
+}
 
 if (isset($_POST['VaciarCesta'])) {
     $_SESSION['productosSeleccionadosCantidad'] = [];
 }
 
-
-    setcookie('idioma', );
-    if ($_COOKIE['idioma'] == null){
-    };
-if (isset($_POST['CambiarIdioma'])) {
-    $idioma = $_GET['idioma'];
-
+if (isset($_POST['verDetalles'])) {
+    $producto = $_POST['verDetalles'];
+    include "index.detalles.php";
+    die();
 }
 
 include "index.view.php";
