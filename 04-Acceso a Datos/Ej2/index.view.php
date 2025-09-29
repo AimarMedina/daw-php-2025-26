@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>App de Gestión de Empleados</h1>
+    <p>Bienvenido a la aplicación de aprendizaje de Gestión de Empleados. Este ejericio tiene como objetivo repasar el acceso a datos pediante PDO y comenzar a separar la lógica de las páginas de la presentacón y del acceso a datos.</p>
+
+    <div class="container">
+        <div class="table">
+            <h1>Listado de empleados</h1>
+            <?php if(!empty($empleados)):?>
+
+            <table>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Opciones</th>
+                </tr>
+                <?php foreach($empleados as $empleado):?>
+                    <tr>
+                        <td><?=$empleado["DNI"]?></td>
+                        <td><?=$empleado["Nombre"]?></td>
+                        <td><?=$empleado["Apellidos"]?></td>
+                        <td><a href="?accion=verDetalles&&empleado=<?=$empleado["DNI"]?>">Ver detalles</a> | <a href="?accion=eliminarEmpleado&&empleado=<?=$empleado["DNI"]?>">Eliminar empleado</a></td>
+                    </tr>
+                <?php endforeach;?>
+            </table>
+            <p>*Opción secreta: <a href="?accion=VaciarLista">Vaciar Lista</a></p>
+            <?php else: ?>
+                <p>No hay empleados guardados en la base de datos</p>
+            <?php endif;?>
+        </div>
+        <div class="form">
+            <form action="index.php" method="post">
+                <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Apellidos">
+                <input type="number" placeholder="Edad">
+                <input type="date">
+                <input type="email" placeholder="Email">
+                <input type="text" placeholder="DNI">
+                <select name="sexo" id="sexo">
+                    <option value="hombre" selected>Hombre</option>
+                    <option value="mujer">Mujer</option>
+                </select>
+                <textarea name="curriculum" id="cv" placeholder="Curriculum"></textarea>
+                <input type="submit" value="Añadir" name="añadirEmpleado">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
