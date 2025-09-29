@@ -55,15 +55,15 @@ p {
 
 /* Cabecera de tabla mejorada */
 .table th {
-    background: linear-gradient(90deg, #007BFF, #0056b3); /* degradado azul */
+    background: rgb(43, 159, 255);
     color: #fff;
-    text-transform: uppercase; /* todo en mayúsculas */
+    text-transform: uppercase;
     font-weight: 600;
     font-size: 14px;
     padding: 12px 15px;
-    border-bottom: 3px solid #004080; /* línea más marcada */
-    border-radius: 8px 8px 0 0; /* esquinas superiores redondeadas */
-    letter-spacing: 1px; /* espacio entre letras */
+    border-bottom: 3px solid #004080;
+    border-radius: 8px 8px 0 0;
+    letter-spacing: 1px;
 }
 
 
@@ -134,4 +134,9 @@ p {
     margin-top: 15px;
     color: #888;
     font-style: italic;
+}
+
+p.error{
+    color: rgb(255, 58, 58);
+    font-size: 12px;
 }

@@ -31,26 +31,29 @@
                     </tr>
                 <?php endforeach;?>
             </table>
-            <p>*Opción secreta: <a href="?accion=VaciarLista">Vaciar Lista</a></p>
+            <p>*Opción secreta: <a href="?accion=eliminarEmpleados">Vaciar Lista</a></p>
             <?php else: ?>
                 <p>No hay empleados guardados en la base de datos</p>
             <?php endif;?>
         </div>
         <div class="form">
-            <form action="index.php" method="post">
-                <input type="text" placeholder="Nombre">
-                <input type="text" placeholder="Apellidos">
-                <input type="number" placeholder="Edad">
-                <input type="date">
-                <input type="email" placeholder="Email">
-                <input type="text" placeholder="DNI">
-                <select name="sexo" id="sexo">
+            <form action="index.php?" method="post">
+                <input type="text" placeholder="Nombre" name="Nombre">
+                <input type="text" placeholder="Apellidos" name="Apellidos">
+                <input type="number" placeholder="Edad" name="Edad">
+                <input type="date" name="FechaNac">
+                <input type="email" placeholder="Email" name="Email">
+                <input type="text" placeholder="DNI" name="DNI">
+                <select name="Sexo" id="sexo">
                     <option value="hombre" selected>Hombre</option>
                     <option value="mujer">Mujer</option>
                 </select>
-                <textarea name="curriculum" id="cv" placeholder="Curriculum"></textarea>
+                <textarea name="Curriculum" id="cv" placeholder="Curriculum"></textarea>
                 <input type="submit" value="Añadir" name="añadirEmpleado">
-            </form>
+            </form> <br>
+            <?php if(isset($mensjaErrorCamposVacios)):?>
+                <p class="error">Faltan Campos por rellenar: <?=implode(", ",$camposVacios)?>.</p>
+            <?php endif;?>
         </div>
     </div>
 </body>
