@@ -14,10 +14,9 @@
         <div class="table">
             <h1>Listado de empleados</h1>
             <?php if(!empty($empleados)):?>
-                <form action="index.php" class="buscarEmpleados" method="post">
-                    <input type="text" name="nombre">
-                    <input type="hidden" name="accion" value="buscarEmpleadosNombre">
-                    <input type="submit" name="Enviar">
+                <form action="index.php" method="get">
+                    <input type="text" name="Nombre">
+                    <input type="submit" name="accion" value="BuscarEmpleados">
                 </form>
             <table>
                 <tr>
