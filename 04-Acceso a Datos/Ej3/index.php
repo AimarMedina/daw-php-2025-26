@@ -105,9 +105,9 @@ if(isset($_GET['accion'])){
             $empleado = seleccionarEmpleado($_GET['empleado'],$dbh);
             include "index.detalles.php";
             die();
-        case "BuscarEmpleados":
-            if ($_GET['Nombre']){
-                $resultado = buscarEmpleadosNombre($_GET['Nombre'],$dbh);
+        case "buscarEmpleadosNombre":
+            if ($_GET['nombre']){
+                $resultado = buscarEmpleadosNombre($_GET['nombre'],$dbh);
                 if($resultado){
                     $empleados = $resultado;
                 }

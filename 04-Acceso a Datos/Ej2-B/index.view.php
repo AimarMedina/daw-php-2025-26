@@ -14,11 +14,6 @@
         <div class="table">
             <h1>Listado de empleados</h1>
             <?php if(!empty($empleados)):?>
-                <form action="index.php" class="buscarEmpleados" method="get">
-                    <input type="text" name="nombre">
-                    <input type="hidden" name="accion" value="buscarEmpleadosNombre">
-                    <input type="submit" value="Buscar Empleado">
-                </form>
             <table>
                 <tr>
                     <th>DNI</th>
