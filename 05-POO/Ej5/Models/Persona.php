@@ -1,5 +1,7 @@
 <?php
 
+namespace Models;
+
 class Persona{
     public static $personasEnElMundo = 0;
 
