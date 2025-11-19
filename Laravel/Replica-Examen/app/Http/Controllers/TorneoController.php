@@ -30,4 +30,34 @@ class TorneoController extends Controller
         $torneo = new Torneo();
         return view('torneoForm',['torneo'=>$torneo]);
     }
+
+    public function modify($id, Request $req){
+        $torneo = Torneo::find($id);
+
+        $torneo->titulo = $req->titulo;
+        $torneo->juego = $req->juego;
+        $torneo->fecha_inicio = $req->fecha_inicio;
+        $torneo->plazas_totales = $req->plazas_totales;
+        $torneo->estado = $req->estado == 'abierto' ? true : false;
+
+        $torneo->save();
+
+        return redirect()->route('index');
+    }
+
+    public function create(Request $request)
+    {
+        $data = $request->validate([
+            'titulo' => 'required|string|max:255',
+            'juego' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'fecha_inicio' => 'required|date',
+            'plazas_totales' => 'required|integer|min:1',
+            'estado' => 'required|in:abierto,cerrado',
+        ]);
+
+        Torneo::create($data);
+
+        return redirect()->route('index');
+    }
 }
