@@ -12,8 +12,22 @@
 <body>
     <div>
         <div>
-            <h2>Torneos disponibles</h2>
-            <a href="{{ route('createForm') }}" class="btn btn-success">Crear torneo</a>
+            <header>
+                <h2>Torneos disponibles</h2>
+                @auth
+                    <div class="actions">
+                        <span>Bienvenido, {{ Auth::user()->name }}</span>
+                        <a href="{{ route('logout') }}">
+                            <button class="btn-danger">Cerrar sesión</button>
+                        </a>
+                    </div>
+                @else
+                    <a href="{{ route('loginForm') }}">Iniciar sesión</a>
+                @endauth
+            </header>
+            @auth
+                <a href="{{ route('createForm') }}" class="btn btn-success">Crear torneo</a>
+            @endauth
         </div>
 
         <table>
@@ -42,16 +56,18 @@
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="{{route('show',['id'=>$t->id])}}" class="btn">Ver
+                        <a href="{{ route('show', ['id' => $t->id]) }}" class="btn">Ver
                             más</a>
+                        @auth
+                            <!-- Modificar -->
+                            <a href="{{ route('modifyForm', ['id' => $t->id]) }}" class="btn btn-warning"
+                                title="Modificar torneo">Modificar</a>
 
-                        <!-- Modificar -->
-                        <a href="{{route('modifyForm',['id'=>$t->id])}}" class="btn btn-warning" title="Modificar torneo">Modificar</a>
 
-
-                        <!-- Eliminar -->
-                        <a href="{{route('delete',['id'=>$t->id])}}"
-                            class="btn btn-danger" title="Eliminar torneo">Eliminar</a>
+                            <!-- Eliminar -->
+                            <a href="{{ route('delete', ['id' => $t->id]) }}" class="btn btn-danger"
+                                title="Eliminar torneo">Eliminar</a>
+                        @endauth
                     </td>
                 </tr>
                 <?php endforeach; ?>

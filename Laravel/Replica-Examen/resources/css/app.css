@@ -19,10 +19,18 @@ body {
 /* Header */
 header {
     background: #f4f4f4;
-    padding: 1rem 0;
+    padding: 1rem 10px;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
+.actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    
+}
 header .container {
     display: flex;
     justify-content: space-between;
@@ -127,7 +135,6 @@ button:hover,
 
 .btn-warning {
     background: #ffc107;
-    color: #333;
 }
 
 .btn-warning:hover {
