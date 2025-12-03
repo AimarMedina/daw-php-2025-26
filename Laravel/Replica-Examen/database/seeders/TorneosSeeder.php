@@ -16,7 +16,7 @@ class TorneosSeeder extends Seeder
         DB::table('torneos')->insert([
             [
                 'titulo' => 'Torneo Spring 2025',
-                'juego' => 'League of Legends',
+                'id_juego' => 1,
                 'descripcion' => 'Torneo clasificatorio para la temporada primavera. Equipos de 5 jugadores.',
                 'fecha_inicio' => '2025-03-15',
                 'plazas_totales' => 32,
@@ -24,7 +24,7 @@ class TorneosSeeder extends Seeder
             ],
             [
                 'titulo' => 'Champions Cup',
-                'juego' => 'Valorant',
+                'id_juego' => 1,
                 'descripcion' => 'Copa de campeones con premios en efectivo. Formato 5v5.',
                 'fecha_inicio' => '2025-04-10',
                 'plazas_totales' => 16,
@@ -32,7 +32,7 @@ class TorneosSeeder extends Seeder
             ],
             [
                 'titulo' => 'Masters Tournament',
-                'juego' => 'CS:GO',
+                'id_juego' => 3,
                 'descripcion' => 'Torneo profesional con las mejores escuadras del país.',
                 'fecha_inicio' => '2025-05-20',
                 'plazas_totales' => 24,
@@ -40,7 +40,7 @@ class TorneosSeeder extends Seeder
             ],
             [
                 'titulo' => 'Rocket League Pro',
-                'juego' => 'Rocket League',
+                'id_juego' => 3,
                 'descripcion' => 'Competición 3v3 para equipos profesionales.',
                 'fecha_inicio' => '2025-03-25',
                 'plazas_totales' => 16,
@@ -48,7 +48,7 @@ class TorneosSeeder extends Seeder
             ],
             [
                 'titulo' => 'FIFA Champions',
-                'juego' => 'FIFA 24',
+                'id_juego' => 2,
                 'descripcion' => 'Torneo individual de FIFA. Premios para los 3 primeros.',
                 'fecha_inicio' => '2025-04-05',
                 'plazas_totales' => 64,
@@ -56,7 +56,7 @@ class TorneosSeeder extends Seeder
             ],
             [
                 'titulo' => 'Winter Cup',
-                'juego' => 'Fortnite',
+                'id_juego' => 4,
                 'descripcion' => 'Copa de invierno - modo squad. Premios especiales.',
                 'fecha_inicio' => '2025-02-15',
                 'plazas_totales' => 40,

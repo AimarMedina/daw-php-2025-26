@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Juego;
 use Illuminate\Http\Request;
 use App\Models\Torneo;
 
@@ -24,16 +25,18 @@ class TorneoController extends Controller
     }
     public function modifyForm($id){
         $torneo = Torneo::find($id);
-        return view('torneoForm',['torneo'=>$torneo]);
+        $juegos = Juego::all();
+
+        return view('torneoForm',['torneo'=>$torneo,'juegos' => $juegos]);
     }
     public function createForm(){
         $torneo = new Torneo();
-        return view('torneoForm',['torneo'=>$torneo]);
+        $juegos = Juego::all();
+        return view('torneoForm',['torneo'=>$torneo,'juegos' => $juegos]);
     }
 
     public function modify($id, Request $req){
         $torneo = Torneo::find($id);
-
         $torneo->titulo = $req->titulo;
         $torneo->juego = $req->juego;
         $torneo->fecha_inicio = $req->fecha_inicio;

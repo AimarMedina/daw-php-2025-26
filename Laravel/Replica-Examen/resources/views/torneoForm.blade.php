@@ -15,7 +15,11 @@
         </div>
         <div>
             <label>Juego</label>
-            <input type="text" name="juego" required value="{{ $torneo->juego ?? '' }}">
+            <select name="juego" id="">
+                @foreach ($juegos as $juego)
+                    <option value="{{$juego->id}}" {{ $juego->id == $torneo->juego?->id ? 'selected' : '' }}>{{$juego->nombre}}</option>
+                @endforeach
+            </select>
 
         </div>
         <div>

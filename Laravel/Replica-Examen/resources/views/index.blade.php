@@ -9,14 +9,30 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+@php
+    $idioma = request()->cookie('idioma', 'es');
+@endphp
+
 <body>
     <div>
         <div>
             <header>
-                <h2>Torneos disponibles</h2>
+                <h2>
+                    @if ($idioma == 'es')
+                        Torneos disponibles
+                    @else
+                        Eskaintzen diren txapelketak
+                    @endif
+                </h2>
                 @auth
                     <div class="actions">
-                        <span>Bienvenido, {{ Auth::user()->name }}</span>
+                        <span>
+                            @if ($idioma == 'es')
+                                Bienvenido,
+                            @else
+                                Ongi etorri,
+                            @endif
+                             {{ Auth::user()->name }}</span>
                         <a href="{{ route('logout') }}">
                             <button class="btn-danger">Cerrar sesión</button>
                         </a>
@@ -45,8 +61,8 @@
                 <?php foreach ($torneos as $t): ?>
                 <tr>
                     <td><?= $t->titulo ?></td>
-                    <td><?= $t->juego ?></td>
-                    <td><?= $t->fecha ?></td>
+                    <td><?= $t->juego->nombre ?></td>
+                    <td><?= $t->fecha_inicio ?></td>
                     <td><?= $t->plazas_totales ?></td>
                     <td>
                         <?php if ($t->estado === 'abierto'): ?>
@@ -73,6 +89,20 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <div>
+            <footer>
+                <h1>Seleccion de idioma</h1>
+                <form action="{{ route('setCookie') }}" method="GET">
+                    @csrf
+
+                    <select name="idioma" id="">
+                        <option value="es" @selected($idioma == 'es')>Castellano</option>
+                        <option value="eus" @selected($idioma == 'eus')>Euskera</option>
+                    </select>
+                    <input type="submit" value="Aceptar" class="btn ">
+                </form>
+            </footer>
+        </div>
     </div>
 </body>
 

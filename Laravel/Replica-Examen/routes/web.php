@@ -20,3 +20,5 @@ Route::get('/torneo/{id}', [TorneoController::class, 'show'])->name('show');
 Route::get('/login', [UserController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/toreno/setCookie',[UserController::class, 'setCookie'])->name('setCookie');

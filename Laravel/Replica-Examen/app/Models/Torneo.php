@@ -14,4 +14,8 @@ class Torneo extends Model
         'plazas_totales',
         'estado',
     ];
+
+    public function juego(){
+        return $this->belongsTo(Juego::class, 'id_juego');
+    }
 }

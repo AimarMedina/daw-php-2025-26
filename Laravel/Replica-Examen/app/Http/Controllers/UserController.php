@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -26,11 +28,15 @@ class UserController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
-    
+
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function setCookie(Request $request){
+        return redirect()->route('index')->withCookie(cookie('idioma', $request->idioma));
     }
 }
