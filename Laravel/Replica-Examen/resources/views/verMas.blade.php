@@ -3,8 +3,8 @@
      <h2><?= $torneo->titulo ?></h2>
 
      <div>
-         <p><strong>Juego:</strong> <?= $torneo->juego ?></p>
-         <p><strong>Fecha:</strong> <?= $torneo->fecha ?></p>
+         <p><strong>Juego:</strong> <?= $torneo->juego->nombre ?></p>
+         <p><strong>Fecha:</strong> <?= $torneo->fecha_inicio ?></p>
          <p><strong>Plazas totales:</strong> <?= $torneo->plazas_totales ?></p>
          <p><strong>Estado:</strong>
              <?php if ($torneo->estado === 'abierto'): ?>
@@ -16,7 +16,7 @@
 
          <?php if (!empty($torneo->descripcion)): ?>
              <p><strong>Descripción:</strong></p>
-             <p><?= nl2br($torneo->descripcion) ?></p>
+             <p><?= $torneo->descripcion ?></p>
          <?php endif; ?>
      </div>
 

@@ -15,7 +15,11 @@
         </div>
         <div>
             <label>Juego</label>
-            <input type="text" name="juego" required value="{{ $torneo->juego ?? '' }}">
+            <select name="juego" id="">
+                @foreach ($juegos as $juego)
+                    <option value="{{$juego->id}}" {{ $juego->id == $torneo->juego?->id ? 'selected' : '' }}>{{$juego->nombre}}</option>
+                @endforeach
+            </select>
 
         </div>
         <div>
@@ -38,7 +42,13 @@
             <label>Descripción</label>
             <textarea name="descripcion">{{ $torneo->descripcion ?? '' }}</textarea>
         </div>
-        <button type="submit">Crear</button>
+        <button type="submit">
+            @if($torneo->id)
+                Modificar
+            @else
+                Crear
+            @endif
+        </button>
         <a href="{{ route('index') }}" class="btn">Volver</a>
     </form>
 </div>

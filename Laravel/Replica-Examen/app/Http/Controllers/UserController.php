@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -32,5 +34,9 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function setCookie(Request $request){
+        return redirect()->intended()->withCookie(cookie('idioma', $request->idioma));
     }
 }

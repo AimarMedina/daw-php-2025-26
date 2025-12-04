@@ -8,10 +8,14 @@ class Torneo extends Model
 {
     protected $fillable = [
         'titulo',
-        'juego',
+        'id_juego',
         'descripcion',
         'fecha_inicio',
         'plazas_totales',
         'estado',
     ];
+
+    public function juego(){
+        return $this->belongsTo(Juego::class, 'id_juego');
+    }
 }
