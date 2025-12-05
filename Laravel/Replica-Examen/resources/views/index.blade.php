@@ -10,7 +10,7 @@
 </head>
 
 @php
-    $idioma = request()->cookie('idioma', 'es');
+    $idioma = request()->cookie('idioma');
 @endphp
 
 <body>
@@ -92,8 +92,8 @@
                     @csrf
 
                     <select name="idioma" id="">
-                        <option value="es" @selected($idioma == 'es')>Castellano</option>
-                        <option value="eus" @selected($idioma == 'eus')>Euskera</option>
+                        <option value="es" {{ __('torneo.lang') == 'es' ? 'selected' : '' }}>Castellano</option>
+                        <option value="eus" {{ __('torneo.lang') == 'eus' ? 'selected' : '' }}>Euskera</option>
                     </select>
                     <input type="submit" value="Aceptar" class="btn ">
                 </form>

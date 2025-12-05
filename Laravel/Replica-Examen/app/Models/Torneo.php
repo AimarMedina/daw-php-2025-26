@@ -19,6 +19,6 @@ class Torneo extends Model
         return $this->belongsTo(Juego::class, 'id_juego');
     }
     public function usuario(){
-        return $this->belongsToMany(User::class, 'torneo_usuario', 'id_Torneo', 'id_usuario');
+        return $this->belongsToMany(User::class, 'torneo_usuarios', 'id_Torneo', 'id_Usuario');
     }
 }

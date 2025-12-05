@@ -14,7 +14,7 @@ class TorneoUsuarioSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('torneo_usuario')->insert(
+        DB::table('torneo_usuarios')->insert(
         [
             [
                 'id_Torneo' => 1,

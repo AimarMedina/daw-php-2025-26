@@ -15,7 +15,7 @@
         </div>
         <div>
             <label>Juego</label>
-            <select name="juego" id="">
+            <select name="id_juego" id="">
                 @foreach ($juegos as $juego)
                     <option value="{{$juego->id}}" {{ $juego->id == $torneo->juego?->id ? 'selected' : '' }}>{{$juego->nombre}}</option>
                 @endforeach
@@ -34,8 +34,8 @@
         <div>
             <label>Estado</label>
             <select name="estado" id="estado">
-                <option value="abierto">Abierto</option>
-                <option value="cerrado">Cerrado</option>
+                <option value="abierto" @selected($torneo->id ? $torneo->estado == 'abierto' ? 'selected' : '' : '')>Abierto</option>
+                <option value="cerrado" @selected($torneo->id ? $torneo->estado == 'cerrado' ? 'selected' : '' : '')>Cerrado</option>
             </select>
         </div>
         <div>

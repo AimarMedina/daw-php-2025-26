@@ -38,10 +38,10 @@ class TorneoController extends Controller
     public function modify($id, Request $req){
         $torneo = Torneo::find($id);
         $torneo->titulo = $req->titulo;
-        $torneo->id_juego = $req->juego;
+        $torneo->id_juego = $req->id_juego;
         $torneo->fecha_inicio = $req->fecha_inicio;
         $torneo->plazas_totales = $req->plazas_totales;
-        $torneo->estado = $req->estado == 'abierto' ? true : false;
+        $torneo->estado = $req->estado;
 
         $torneo->save();
         return redirect()->route('index');
