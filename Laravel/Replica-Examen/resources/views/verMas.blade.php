@@ -18,6 +18,21 @@
              <p><strong>Descripción:</strong></p>
              <p><?= $torneo->descripcion ?></p>
          <?php endif; ?>
+         <h2>Usuarios inscritos:</h2>
+         <table>
+            <thead>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Fecha Inscripcion</th>
+            </thead>
+            <tbody>
+                @foreach ($torneo->usuario as $usuario )
+                <td>{{ $usuario->name }}</td>
+                <td>{{ $usuario->email }}</td>
+                <td>{{ $usuario->pivot->created_at->format('Y/m/d - H:i') }}</td>
+                @endforeach
+            </tbody>
+         </table>
      </div>
 
      <div>

@@ -36,9 +36,9 @@ class UserController extends Controller
     }
 
     public function setCookie(Request $request){
-        cookie('idioma', $request->idioma);
+        $cookie = cookie('idioma', $request->idioma);
         Session::put('locale',$request->idioma);
         App::setLocale(request()->cookie('idioma', 'es'));
-        return redirect()->intended('/');
+        return redirect()->intended('/')->withCookie($cookie);
     }
 }

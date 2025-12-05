@@ -55,7 +55,7 @@
                     <td><?= $t->titulo ?></td>
                     <td><?= $t->juego->nombre ?></td>
                     <td><?= $t->fecha_inicio ?></td>
-                    <td><?= $t->plazas_totales ?></td>
+                    <td><?= $t->usuario->count().'/'.$t->plazas_totales ?></td>
                     <td>
                         <?php if ($t->estado === 'abierto'): ?>
                         <span>Abierto</span>
@@ -88,7 +88,7 @@
         <div>
             <footer>
                 <h1>Seleccion de idioma</h1>
-                <form action="{{ route('setCookie') }}" method="GET">
+                <form action="{{ route('setCookie') }}" method="POST">
                     @csrf
 
                     <select name="idioma" id="">
