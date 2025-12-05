@@ -41,29 +41,36 @@ routes/
 erDiagram
     USERS ||--o{ TORNEO_USUARIO : inscribe
     TORNEOS ||--o{ TORNEO_USUARIO : contiene
+
     USERS {
-        int id PK
-        string name
-        string email
-        string password
-        timestamps
+        int id PK;
+        string name;
+        string email;
+        string password;
+        timestamp created_at;
+        timestamp updated_at;
     }
+
     TORNEOS {
-        int id PK
-        string titulo
-        text descripcion
-        date fecha_inicio
-        int plazas_totales
-        enum estado
-        foreign id_juego
-        timestamps
+        int id PK;
+        string titulo;
+        text descripcion;
+        date fecha_inicio;
+        int plazas_totales;
+        enum estado;
+        int id_juego FK;
+        timestamp created_at;
+        timestamp updated_at;
     }
+
     TORNEO_USUARIO {
-        int id PK
-        foreign id_Usuario
-        foreign id_Torneo
-        timestamps
+        int id PK;
+        int id_Usuario FK;
+        int id_Torneo FK;
+        timestamp created_at;
+        timestamp updated_at;
     }
+
 ```
 
 - **users**: usuarios registrados.  
