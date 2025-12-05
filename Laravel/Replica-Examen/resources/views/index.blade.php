@@ -18,20 +18,12 @@
         <div>
             <header>
                 <h2>
-                    @if ($idioma == 'es')
-                        Torneos disponibles
-                    @else
-                        Eskaintzen diren txapelketak
-                    @endif
+                    {{__('torneo.titulo')}}
                 </h2>
                 @auth
                     <div class="actions">
                         <span>
-                            @if ($idioma == 'es')
-                                Bienvenido,
-                            @else
-                                Ongi etorri,
-                            @endif
+                            {{__('torneo.message')}}
                              {{ Auth::user()->name }}</span>
                         <a href="{{ route('logout') }}">
                             <button class="btn-danger">Cerrar sesión</button>

@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-
-
 class UserController extends Controller
 {
     //
@@ -37,6 +36,9 @@ class UserController extends Controller
     }
 
     public function setCookie(Request $request){
-        return redirect()->intended()->withCookie(cookie('idioma', $request->idioma));
+        cookie('idioma', $request->idioma);
+        Session::put('locale',$request->idioma);
+        App::setLocale(request()->cookie('idioma', 'es'));
+        return redirect()->intended('/');
     }
 }
