@@ -44,7 +44,6 @@ class TorneoController extends Controller
         $torneo->estado = $req->estado == 'abierto' ? true : false;
 
         $torneo->save();
-
         return redirect()->route('index');
     }
 
@@ -63,4 +62,6 @@ class TorneoController extends Controller
 
         return redirect()->route('index');
     }
+
+
 }

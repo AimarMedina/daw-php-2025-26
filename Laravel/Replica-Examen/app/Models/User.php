@@ -45,4 +45,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function torneo(){
+        return $this->belongsToMany(Torneo::class, 'torneo_usuario', 'id_usuario', 'id_Torneo');
+    }
 }

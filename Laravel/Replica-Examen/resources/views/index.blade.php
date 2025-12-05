@@ -67,6 +67,10 @@
                         <a href="{{ route('show', ['id' => $t->id]) }}" class="btn">Ver
                             más</a>
                         @auth
+                        @if (!$t->usuario->contains(Auth::user()->id))
+                            <!-- Inscribirse -->
+                            <a href="{{route('inscribirse',['torneo_id'=>$t->id])}}" class="btn btn-success">Inscribirse</a>
+                        @endif
                             <!-- Modificar -->
                             <a href="{{ route('modifyForm', ['id' => $t->id]) }}" class="btn btn-warning"
                                 title="Modificar torneo">Modificar</a>
