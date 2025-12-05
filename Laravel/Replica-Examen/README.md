@@ -1,3 +1,8 @@
+# Replica-Examen (Laravel)
+
+[Descargable README.md]
+
+```markdown
 # Replica-Examen (Laravel) – Guía Definitiva y Visual
 
 ![Laravel](https://img.shields.io/badge/Laravel-10-red)
@@ -41,36 +46,29 @@ routes/
 erDiagram
     USERS ||--o{ TORNEO_USUARIO : inscribe
     TORNEOS ||--o{ TORNEO_USUARIO : contiene
-
     USERS {
-        int id PK;
-        string name;
-        string email;
-        string password;
-        timestamp created_at;
-        timestamp updated_at;
+        int id PK
+        string name
+        string email
+        string password
+        timestamps
     }
-
     TORNEOS {
-        int id PK;
-        string titulo;
-        text descripcion;
-        date fecha_inicio;
-        int plazas_totales;
-        enum estado;
-        int id_juego FK;
-        timestamp created_at;
-        timestamp updated_at;
+        int id PK
+        string titulo
+        text descripcion
+        date fecha_inicio
+        int plazas_totales
+        enum estado
+        foreign id_juego
+        timestamps
     }
-
     TORNEO_USUARIO {
-        int id PK;
-        int id_Usuario FK;
-        int id_Torneo FK;
-        timestamp created_at;
-        timestamp updated_at;
+        int id PK
+        foreign id_Usuario
+        foreign id_Torneo
+        timestamps
     }
-
 ```
 
 - **users**: usuarios registrados.  
@@ -87,8 +85,8 @@ erDiagram
 Schema::create('users', function (Blueprint $table) {
     $table->id();               
     $table->string('name');     
-    $table->string('email')->unique(); 
-    $table->string('password'); 
+    $table->string('email')->unique();
+    $table->string('password');
     $table->rememberToken();    
     $table->timestamps();       
 });
@@ -360,3 +358,5 @@ php artisan serve
 ## 📄 Licencia
 
 Proyecto educativo para **prácticas de Laravel y relaciones entre modelos**.
+```
+
