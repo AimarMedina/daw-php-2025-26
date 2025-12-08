@@ -13,8 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         //
-        $middleware->web(append:[
+        $middleware->web([
             \App\Http\Middleware\SetLocale::class
+        ]);
+        $middleware->alias([
+            'checkLogin' => \App\Http\Middleware\checkLogin::class,
+            'checkAdmin' => \App\Http\Middleware\CheckAdmin::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

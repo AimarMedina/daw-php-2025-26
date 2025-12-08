@@ -15,29 +15,35 @@
 
 <body>
     <div>
-        <div>
+        <div class="headerCrearTorneo">
             <header>
                 <h2>
                     {{__('torneo.titulo')}}
                 </h2>
-                @auth
-                    <div class="actions">
-                        <span>
-                            {{__('torneo.message')}}
-                             {{ Auth::user()->name }}</span>
-                        <a href="{{ route('logout') }}">
-                            <button class="btn-danger">Cerrar sesión</button>
-                        </a>
-                    </div>
-                @else
-                    <a href="{{ route('loginForm') }}">Iniciar sesión</a>
-                @endauth
+                <div class="actions">
+                    @auth
+                            <span>
+                                {{__('torneo.message')}}
+                                {{ Auth::user()->name }}!</span>
+                            <a href="{{ route('logout') }}">
+                                <button class="btn btn-danger">Cerrar sesión</button>
+                            </a>
+                    @else
+                        <a href="{{ route('loginForm') }}" class="btn">Iniciar sesión</a>
+                        <a href="{{ route('registerForm') }}" class="btn">Crear cuenta</a>
+                    @endauth
+                </div>
             </header>
+
+        </div>
+        <div class="subtitleDiv">
+            <h2>{{ __('torneo.subtitulo') }}</h2>
             @auth
-                <a href="{{ route('createForm') }}" class="btn btn-success">Crear torneo</a>
+                @if (Auth::user()->type == 'admin')
+                    <a href="{{ route('createForm') }}" class="btn btn-success">Crear torneo</a>
+                @endif
             @endauth
         </div>
-
         <table>
             <thead>
                 <tr>
@@ -58,27 +64,30 @@
                     <td><?= $t->usuario->count().'/'.$t->plazas_totales ?></td>
                     <td>
                         <?php if ($t->estado === 'abierto'): ?>
-                        <span>Abierto</span>
+                        <span class="abierto">Abierto</span>
                         <?php else: ?>
-                        <span>Cerrado</span>
+                        <span class="cerrado">Cerrado</span>
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="{{ route('show', ['id' => $t->id]) }}" class="btn">Ver
-                            más</a>
+                        <a href="{{ route('show', ['id' => $t->id]) }}" class="btn">Ver más</a>
                         @auth
-                        @if (!$t->usuario->contains(Auth::user()->id))
-                            <!-- Inscribirse -->
-                            <a href="{{route('inscribirse',['torneo_id'=>$t->id])}}" class="btn btn-success">Inscribirse</a>
-                        @endif
-                            <!-- Modificar -->
-                            <a href="{{ route('modifyForm', ['id' => $t->id]) }}" class="btn btn-warning"
-                                title="Modificar torneo">Modificar</a>
+                            @if (!$t->usuario->contains(Auth::user()->id))
+                                @if ($t->estado == 'abierto')
+                                    <!-- Inscribirse -->
+                                    <a href="{{route('inscribirse',['torneo_id'=>$t->id])}}" class="btn btn-success">Inscribirse</a>
+                                @endif
+                            @endif
+                            @if (Auth::user()->type == 'admin')
+                                <!-- Modificar -->
+                                <a href="{{ route('modifyForm', ['id' => $t->id]) }}" class="btn btn-warning"
+                                    title="Modificar torneo">Modificar</a>
 
 
-                            <!-- Eliminar -->
-                            <a href="{{ route('delete', ['id' => $t->id]) }}" class="btn btn-danger"
-                                title="Eliminar torneo">Eliminar</a>
+                                <!-- Eliminar -->
+                                <a href="{{ route('delete', ['id' => $t->id]) }}" class="btn btn-danger"
+                                    title="Eliminar torneo">Eliminar</a>
+                            @endif
                         @endauth
                     </td>
                 </tr>

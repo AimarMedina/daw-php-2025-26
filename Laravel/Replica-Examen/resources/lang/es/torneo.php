@@ -2,6 +2,7 @@
 
 return [
     'lang' => 'es',
-    'titulo' => 'Torneos disponibles',
+    'titulo' => 'Torneos',
+    'subtitulo' => 'Torneos disponibles',
     'message' => '¡Bienvenido, ',
 ];

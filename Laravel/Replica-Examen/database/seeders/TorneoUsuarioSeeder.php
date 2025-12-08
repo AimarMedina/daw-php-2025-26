@@ -16,14 +16,6 @@ class TorneoUsuarioSeeder extends Seeder
         //
         DB::table('torneo_usuarios')->insert(
         [
-            [
-                'id_Torneo' => 1,
-                'id_Usuario' => 1
-            ],
-            [
-                'id_Torneo' => 2,
-                'id_Usuario' => 1
-            ]
     ]);
     }
 }

@@ -2,6 +2,7 @@
 
 return [
     'lang' => 'eus',
-    'titulo' => 'Eskaintzen diren txapelketak',
+    'titulo' => 'Txapelketak',
+    'subtitulo' => 'Eskaintzen diren txapelketak',
     'message' => '¡Ongi etorri, ',
 ];

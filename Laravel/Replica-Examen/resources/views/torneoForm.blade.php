@@ -1,5 +1,5 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
-<div>
+<div class="form">
     <h2>Crear nuevo torneo</h2>
     <form action="{{ $torneo->id ? route('modify', $torneo->id) : route('create') }}" method="POST">
         @csrf
