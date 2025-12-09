@@ -240,3 +240,50 @@ tbody tr:hover{ background:linear-gradient(90deg, rgba(37,99,235,0.02), transpar
   .form, .card{ padding:12px; }
   table th, table td{ padding:8px; }
 }
+
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: fadeInOut 4s ease forwards;
+}
+
+.alert-success{
+        background-color: #28a745;
+}
+.alert-danger{
+        background-color: #c03737;
+
+}
+/* Animación completa: aparecer → esperar → desaparecer */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    70% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
+.no-click {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+    color: white;
+    background: #00000067;
+}
