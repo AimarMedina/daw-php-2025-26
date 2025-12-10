@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TorneoController::class, 'index'])->name('index');
-Route::get('/torneo/delete/{id}', [TorneoController::class, 'delete'])->name('delete');
+Route::get('/torneo/delete/{id}', [TorneoController::class, 'delete'])->name('delete')->middleware(['checkLogin','checkAdmin']);
 
 
 Route::get('/torneo/modifyForm/{id}', [TorneoController::class, 'modifyForm'])->name('modifyForm')->middleware(['checkLogin','checkAdmin']);

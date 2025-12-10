@@ -39,6 +39,7 @@ class TorneoController extends Controller
         $torneo = Torneo::find($id);
         $torneo->titulo = $req->titulo;
         $torneo->id_juego = $req->id_juego;
+        $torneo->descripcion = $req->descripcion;
         $torneo->fecha_inicio = $req->fecha_inicio;
         $torneo->plazas_totales = $req->plazas_totales;
         $torneo->estado = $req->estado;
