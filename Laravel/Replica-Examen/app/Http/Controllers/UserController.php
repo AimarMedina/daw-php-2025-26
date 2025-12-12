@@ -46,6 +46,9 @@ class UserController extends Controller
             'name' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'confirmed']
+        ], [
+            'email.unique' => 'Este correo ya esta registrado.',
+            'password.confirmed' => 'Las contraseñas no coinciden'
         ]
         );
 

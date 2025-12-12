@@ -14,7 +14,17 @@
 @endphp
 
 <body>
-    <div>
+    @error('plazasCompletas')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    @error('torneoCerrado')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    @error('usuarioInscrito')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    <div class="continer">
+
         <div class="headerCrearTorneo">
             <header>
                 <h2>
@@ -22,12 +32,12 @@
                 </h2>
                 <div class="actions">
                     @auth
-                            <span>
-                                {{__('torneo.message')}}
-                                {{ Auth::user()->name }}!</span>
-                            <a href="{{ route('logout') }}">
-                                <button class="btn btn-danger">Cerrar sesión</button>
-                            </a>
+                        <span>
+                            {{__('torneo.message')}}
+                            {{ Auth::user()->name }}!</span>
+                        <a href="{{ route('logout') }}">
+                            <button class="btn btn-danger">Cerrar sesión</button>
+                        </a>
                     @else
                         <a href="{{ route('loginForm') }}" class="btn">Iniciar sesión</a>
                         <a href="{{ route('registerForm') }}" class="btn">Crear cuenta</a>
@@ -57,32 +67,34 @@
             </thead>
             <tbody>
                 <?php foreach ($torneos as $t): ?>
+                @php
+                    $torneoLleno = $t->usuario->count() >= $t->plazas_totales;
+                    $usuarioInscrito = $t->usuario->contains(Auth::id());
+                    $noAbierto = $t->estado != 'abierto';
+                @endphp
                 <tr>
-                    <td><?= $t->titulo ?></td>
-                    <td><?= $t->juego->nombre ?></td>
-                    <td><?= $t->fecha_inicio ?></td>
-                    <td><?= $t->usuario->count().'/'.$t->plazas_totales ?></td>
+                    <td>{{ $t->titulo }}</td>
+                    <td>{{ $t->juego->nombre }}</td>
+                    <td>{{ $t->fecha_inicio }}</td>
+                    <td>{{ $t->usuario->count() . '/' . $t->plazas_totales }}</td>
                     <td>
-                        <?php if ($t->estado === 'abierto'): ?>
+                        <?php    if ($t->estado === 'abierto'): ?>
                         <span class="abierto">Abierto</span>
-                        <?php else: ?>
+                        <?php    else: ?>
                         <span class="cerrado">Cerrado</span>
-                        <?php endif; ?>
+                        <?php    endif; ?>
                     </td>
                     <td>
                         <a href="{{ route('show', ['id' => $t->id]) }}" class="btn">Ver más</a>
                         @auth
-                            @if (!$t->usuario->contains(Auth::user()->id))
-                                @if ($t->estado == 'abierto')
-                                    <!-- Inscribirse -->
-                                    <a href="{{route('inscribirse',['torneo_id'=>$t->id])}}" class="btn btn-success">Inscribirse</a>
-                                @endif
-                            @endif
+                            <!-- Inscribirse -->
+                            <a href="{{ route('inscribirse', ['torneo_id' => $t->id]) }}"
+                                class="btn {{ $noAbierto || $torneoLleno || $usuarioInscrito ? 'no-click' : 'btn-success' }}">Inscribirse</a>
+
                             @if (Auth::user()->type == 'admin')
                                 <!-- Modificar -->
                                 <a href="{{ route('modifyForm', ['id' => $t->id]) }}" class="btn btn-warning"
                                     title="Modificar torneo">Modificar</a>
-
 
                                 <!-- Eliminar -->
                                 <a href="{{ route('delete', ['id' => $t->id]) }}" class="btn btn-danger"

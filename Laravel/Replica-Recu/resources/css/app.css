@@ -1,7 +1,7 @@
 /* resources/css/app.css - Minimal & clean */
 
 /* --- Variables --- */
-:root{
+:root {
   --bg: #f7f8fb;
   --card: #ffffff;
   --muted: #6b7280;
@@ -17,61 +17,44 @@
 }
 
 /* --- Base reset --- */
-*{
-    box-sizing: border-box
+* {
+  box-sizing: border-box;
 }
-html,body{height:100%}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  padding:28px;
-  display:flex;
-  justify-content:center;
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 28px;
 }
 
-/* --- Page container --- */
-.container{
-  width:100%;
-  max-width:1100px;
-  margin:0 auto;
-  gap:var(--gap);
-  padding:0 12px;
-}
-
-/* --- Cards / panels --- */
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:18px;
-  box-shadow:0 6px 18px rgba(16,24,40,0.04);
-  margin-bottom:16px;
+/* --- Container --- */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: var(--gap);
+  padding: 0 12px;
 }
 
 /* --- Header --- */
-.headerCrearTorneo header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:8px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
-.headerCrearTorneo h2{ margin:0; font-size:1.25rem; }
-.headerCrearTorneo .actions{ display:flex; gap:10px; align-items:center; color:var(--muted); font-size:.95rem; }
-
-/* --- Subtitle row --- */
-.subtitleDiv{
-  display:flex;
-  justify-content:center;
-  align-items: start;
-  flex-direction: column;
-  gap:12px;
-  margin:12px 0;
+header h2 { font-size: 1.75rem; margin: 0; }
+header .actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--muted);
 }
-.subtitleDiv h2{ margin:0; font-size:1rem; color:var(--text); }
 
 /* --- Buttons --- */
 .btn{
@@ -286,4 +269,48 @@ tbody tr:hover{ background:linear-gradient(90deg, rgba(37,99,235,0.02), transpar
     cursor: not-allowed;
     color: white;
     background: #00000067;
+}
+
+
+/* --- Footer --- */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 12px 0;
+  margin-top: 24px;
+  text-align: center;
+  color: var(--muted);
+}
+footer form {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+footer select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+/* --- Cards / Panels --- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+  margin-bottom: 16px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  table th, table td { padding: 10px; }
+}
+@media (max-width: 480px) {
+  body { padding: 14px; }
+  :root { font-size: 15px; }
+  table th, table td { padding: 8px; }
 }
